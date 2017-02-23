@@ -14,11 +14,7 @@ namespace Student
             private string firstName, lastName;
             private double gpa;
 
-            public Student() { }
-            public Student(string firstName)
-            {
-                this.firstName = firstName;
-            }
+           
             public Student(string firstName, string lastName, double gpa)
             {
                 this.firstName = firstName;
@@ -28,13 +24,13 @@ namespace Student
 
             public override string ToString()
             {
-                return "First name = " + firstName + "\n" + "Last name = " + lastName + "\n" + "GPA = " + gpa;
+                return "First name : " + firstName + "\n" + "Last name : " + lastName + "\n" + "GPA : " + gpa;
             }
         }
 
         class Sample
         {
-            static void Main()
+            static void Main(string[] args)
             {
                 Student student = new Student("Liza", "Koshy", 3.8);
 

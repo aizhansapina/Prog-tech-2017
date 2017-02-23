@@ -19,7 +19,7 @@ namespace PrimeNumbers
                     cnt++;
             }
 
-            if (cnt == 2 || a == 1)
+            if (cnt == 2) 
             {
                 return a;
             }
@@ -49,7 +49,6 @@ namespace PrimeNumbers
                 {
                     Console.Write(y + " ");
                 }
-
             }
             Console.ReadKey();
         }
