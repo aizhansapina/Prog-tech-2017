@@ -28,8 +28,6 @@ namespace Student
             }
         }
 
-        class Sample
-        {
             static void Main(string[] args)
             {
                 Student student = new Student("Liza", "Koshy", 3.8);
@@ -39,4 +37,4 @@ namespace Student
             }
         }
     }
-}
+

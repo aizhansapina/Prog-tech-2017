@@ -9,7 +9,7 @@ namespace MaxMin
 {
     class Program
     {
-        static void f1()
+        static void mx()
         {
             FileStream fs = new FileStream(@"C:\Users\Айжан\Documents\www.txt", FileMode.Open, FileAccess.Read);
             StreamReader sr = new StreamReader(fs);
@@ -40,7 +40,7 @@ namespace MaxMin
 
         }
 
-        static void f2()
+        static void mn()
         {
             FileStream fs = new FileStream(@"C:\Users\Айжан\Documents\www.txt", FileMode.Open, FileAccess.Read);
             StreamReader sr = new StreamReader(fs);
@@ -72,7 +72,7 @@ namespace MaxMin
 
         static void Main(string[] args)
         {
-            f1();
+            mx();
             
         }
     }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PrimeNumbers
+namespace PN
 {
     class Program
     {
@@ -12,44 +12,37 @@ namespace PrimeNumbers
         {
             int a = x;
             int cnt = 0;
-            for (int i = 1; i <= a; i++)
+            for(int i = 1; i <= a; i++)
             {
                 if (a % i == 0)
                     cnt++;
             }
 
-            if (cnt == 2) 
-            {
+            if (cnt == 2)
                 return a;
+            else
+                return 0;
+            
+        }
+        
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            int b = int.Parse(s);
+            int y;
+            y = IsPrime(b);
+
+            if (b == y)
+            {
+                Console.WriteLine("yes");
             }
             else
             {
-                return 0;
+                Console.WriteLine("no");
             }
 
-        }
-
-        static void Main(string[] args)
-        {
-            Console.WriteLine("enter numbers: ");
-            string s = Console.ReadLine();
-
-            string[] arr = s.Split();
-
-            int y;
-            int z;
-            Console.WriteLine("prime numbers: ");
-
-            for (int i = 0; i < arr.Length; i++)
-            {
-                y = int.Parse(arr[i]);
-                z = IsPrime(y);
-                if (z == y)
-                {
-                    Console.Write(y + " ");
-                }
-            }
             Console.ReadKey();
+
         }
     }
-} 
+}

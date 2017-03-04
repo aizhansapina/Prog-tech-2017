@@ -25,6 +25,7 @@ namespace MinPrime
             else
                 return 0;
         }
+
         static void f1()
         {
             FileStream fs = new FileStream(@"C:\Users\Айжан\Documents\www.txt", FileMode.Open, FileAccess.Read);
@@ -74,7 +75,6 @@ namespace MinPrime
 
         static void Main(string[] args)
         {
-
             f1();
         }
     }

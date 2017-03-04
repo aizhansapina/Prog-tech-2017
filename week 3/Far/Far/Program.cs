@@ -59,6 +59,7 @@ namespace Far
                     }
                 }
                 if (pressedKey.Key == ConsoleKey.Escape)
+
                     break;
             }
         }
