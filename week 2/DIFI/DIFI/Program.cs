@@ -90,14 +90,14 @@ namespace DIFI
 
         static void Ex5()
         {
-            StreamWriter st = new StreamWriter(@"c:\work\a.txt");
+            StreamWriter st = new StreamWriter(@"C:\Users\Айжан\Documents\a.txt");
             st.WriteLine("Hello world");
             st.Close();
         }
 
         static void Ex6()
         {
-            StreamReader sr = new StreamReader(@"C:\work\input.txt");
+            StreamReader sr = new StreamReader(@"C:\Users\Айжан\Documents\input1.txt");
             string s = sr.ReadLine(); 
             string[] arr = s.Split(); 
             int a = int.Parse(arr[0]); 
@@ -109,8 +109,8 @@ namespace DIFI
 
         static void Ex7()
         {
-            StreamReader sr = new StreamReader(@"c:\work\input.txt");
-            StreamWriter sw = new StreamWriter(@"c:\work\output.txt");
+            StreamReader sr = new StreamReader(@"C:\Users\Айжан\Documents\input1.txt");
+            StreamWriter sw = new StreamWriter(@"C:\Users\Айжан\Documents\output1.txt");
             string[] arr = sr.ReadLine().Split();
             int sum = 0;
             foreach (string s in arr)
@@ -139,7 +139,7 @@ namespace DIFI
 
         static void Ex8()
         {
-            StreamReader sr = new StreamReader(@"c:\work\points.txt");
+            StreamReader sr = new StreamReader(@"C:\Users\Айжан\Documents\points.txt");
             string[] arr = sr.ReadLine().Split(); 
             List<Point> points = new List<Point>();
 

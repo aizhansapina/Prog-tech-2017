@@ -21,7 +21,7 @@ namespace Student
                 this.lastName = lastName;
                 this.gpa = gpa;
             }
-
+            
             public override string ToString()
             {
                 return "First name : " + firstName + "\n" + "Last name : " + lastName + "\n" + "GPA : " + gpa;
