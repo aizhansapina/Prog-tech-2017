@@ -5,23 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace MinPrime
+namespace MP
 {
     class Program
     {
-        static int IsPrime(int x)
+        public static int IsPrime(int x)
         {
             int a = x;
-            int с = 0;
-            for (int i = 2; i <= a; i++)
+            int cnt = 0;
+            for (int i = 1; i <= a; i++)
             {
                 if (a % i == 0)
-                    с++;
+                    cnt++;
             }
-
-            if (с == 2)
+            if (cnt == 2)
                 return a;
-
             else
                 return 0;
         }
@@ -30,47 +28,41 @@ namespace MinPrime
         {
             FileStream fs = new FileStream(@"C:\Users\Айжан\Documents\www.txt", FileMode.Open, FileAccess.Read);
             StreamReader sr = new StreamReader(fs);
-
             string s = sr.ReadLine();
-            string[] arr = s.Split();
-
-
-            int mini = int.Parse(arr[0]);
-            for (int i = 0; i < arr.Length; i++)
+            
+            //string[] arr = s.Split();
+            int b = int.Parse(s);
+            int z = IsPrime(b);
+            if (z == b)
             {
-                int t = int.Parse(arr[i]);
-                int y = IsPrime(t);
-                if (y == t)
-                {
-                    if (t < mini)
-                        mini = t;
-                }
+                Console.WriteLine(z);
+            }
+            else
+            {
+             
             }
 
-
-            Console.WriteLine("Minimum prime number is:" + mini);
-            sr.Close();
+            Console.ReadKey();
             fs.Close();
-            f2(mini);
-
-        }
-
-        static void f2(int c)
+            sr.Close();
+            f2(z);
+}
+        static void f2(int y)
         {
             FileStream sf = new FileStream(@"C:\Users\Айжан\Documents\rrr.txt", FileMode.Open, FileAccess.Write);
-            StreamWriter rs = new StreamWriter(sf);
+            StreamWriter sw = new StreamWriter(sf);
 
-            int a = c;
-
-            rs.Write(a);
-            rs.Close();
+            int v = y;
             sf.Close();
+            sw.Close();
+            sw.WriteLine("yes");
 
-
-
-            Console.ReadKey();
+            
+       
         }
 
+
+        
 
         static void Main(string[] args)
         {

@@ -24,34 +24,34 @@ namespace ComplexNumbers
                 if (x == 0)
                     return y;
                 return gcd(y % x, x);
-            }
+            } 
 
             public override string ToString()
             {
                 return this.x / gcd(this.x, this.y) + "/" + this.y / gcd(this.x, this.y);
-            }
+            } 
 
             public static Complex operator +(Complex a, Complex b)
             {
-                Complex c = new Complex(a.x * b.x + a.y * b.y, a.y * b.y);
+                Complex c = new Complex(a.x * b.y + b.x * a.y, a.y * b.y); //a.x * b.x + a.y * b.y, a.y * b.y);
                 return c;
             }
 
             public static Complex operator -(Complex a, Complex b)
             {
-                Complex c = new Complex(a.x * b.x - a.y * b.y, a.y * b.y);
+                Complex c = new Complex(a.x * b.y - b.x * a.y, a.y * b.y);//a.x * b.x - a.y * b.y, a.y * b.y);
                 return c;
             }
 
             public static Complex operator *(Complex a, Complex b)
             {
-                Complex c = new Complex(a.x * b.x * a.y * b.y, a.y * b.y);
+                Complex c = new Complex(a.x * b.x, a.y * b.y);//a.x * b.x * a.y * b.y, a.y * b.y);
                 return c;
             }
 
             public static Complex operator /(Complex a, Complex b)
             {
-                Complex c = new Complex(a.x * b.x / a.y * b.y, a.y * b.y);
+                Complex c = new Complex(a.x * b.y, a.y * b.x);//a.x * b.x / a.y * b.y, a.y * b.y);
                 return c;
             }
 
