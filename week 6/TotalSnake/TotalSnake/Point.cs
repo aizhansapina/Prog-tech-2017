@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TotalSnake
+namespace SNAKE_GAME
 {
-    class Point
+    public class Point
     {
+        public Point() { }
         public int x, y;
         public Point(int _x, int _y)
         {
-            x = _x;
-            y = _y;
+            this.x = _x;
+            this.y = _y;
         }
     }
 }

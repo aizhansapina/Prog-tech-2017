@@ -13,7 +13,6 @@ namespace SnakeTotal
     {
         public Wall(ConsoleColor color, char sign, List<Point> body) : base(color, sign, body)
         {
-
             LoadLevel(1);
         }
 
@@ -21,7 +20,6 @@ namespace SnakeTotal
         {
             Delete(body);
             body.Clear();
-
 
             string filename = string.Format(@"C:\Users\Айжан\Desktop\PT 2017\week 6\SnakeTotal\SnakeTotal\Levels\level{0}.txt", level);
             FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
@@ -34,14 +32,15 @@ namespace SnakeTotal
                 for (int col = 0; col < line.Length; col++)
                 {
                     if (line[col] == '#')
-                    {
                         body.Add(new Point(col, row));
-                    }
                 }
+
                 row++;
             }
+
             Draw();
         }
+
         public void Delete(List<Point> body)
         {
             foreach (Point p in body)
@@ -49,6 +48,7 @@ namespace SnakeTotal
                 Console.SetCursorPosition(p.x, p.y);
                 Console.Write(' ');
             }
+
             body.Clear();
         }
     }

@@ -14,7 +14,6 @@ namespace SnakeTotal
         public static Food food;
         public static Wall wall;
 
-
         public static Thread SnakeMover;
 
         public static void Init()
@@ -28,17 +27,16 @@ namespace SnakeTotal
             List<Point> snake_body = new List<Point>();
             snake_body.Add(new Point(10, 10));
             snake_body.Add(new Point(9, 10));
-            snake = new Snake(ConsoleColor.Yellow, 'o', snake_body);
+            snake = new Snake(ConsoleColor.Magenta, 'o', snake_body);
 
             // wall Init    
             List<Point> wall_body = new List<Point>();
-            wall = new Wall(ConsoleColor.Red, '#', wall_body);
+            wall = new Wall(ConsoleColor.Cyan, '#', wall_body);
 
             // food Init
             List<Point> food_body = new List<Point>();
             food_body.Add(new Point(0, 0));
-            food = new Food(ConsoleColor.Green, '$', food_body);
-
+            food = new Food(ConsoleColor.Red, '*', food_body);
 
             Draw();
 
@@ -54,12 +52,13 @@ namespace SnakeTotal
             food.Draw();
             wall.Draw();
         }
+
         public static void Cases()
         {
             while (!GameOver)
             {
-                ConsoleKeyInfo btn = Console.ReadKey();
-                switch (btn.Key)
+                ConsoleKeyInfo button = Console.ReadKey();
+                switch (button.Key)
                 {
                     case ConsoleKey.UpArrow:
                         snake.Move(0, -1);
@@ -85,8 +84,6 @@ namespace SnakeTotal
                         loadGame();
                         break;
                 }
-
-
             }
         }
 

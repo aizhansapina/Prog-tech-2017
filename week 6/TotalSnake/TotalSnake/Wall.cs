@@ -1,36 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
+using System.Xml.Serialization;
 
-namespace TotalSnake
+namespace SNAKE_GAME
 {
-    class Wall
+    public class Wall
     {
-        public List<Point> body;
-        public char sign = 'o';
-        public ConsoleColor color;
-
-        public Wall()
+        //add datas
+        public char sign = '#';
+        //creat list of points
+        public List<Point> body = new List<Point>();
+        public ConsoleColor color = ConsoleColor.Red;
+        public Wall() { }
+        public Wall(int level)
         {
-            body = new List<Point>();
-            color = ConsoleColor.Red;
 
-            StreamReader sr = new StreamReader(@"C:\Users\Айжан\Documents\wall.txt");
+            DirectoryInfo dr = new DirectoryInfo(@"LVL");
+            FileInfo[] f = dr.GetFiles();
+            StreamReader sr = new StreamReader(f[level].FullName);
             int n = int.Parse(sr.ReadLine());
             for (int i = 0; i < n; i++)
             {
-                String s = sr.ReadLine();
-                for (int j = 0; j < s.Length; j++)
-                {
-                    if (s[j] == '*')
+                string line = sr.ReadLine();
+                for (int j = 0; j < line.Length; j++)
+                    if (line[j] == '#')
                         body.Add(new Point(j, i));
-                }
             }
-            sr.Close();
         }
+
+
         public void Draw()
         {
             Console.ForegroundColor = color;
@@ -39,6 +41,31 @@ namespace TotalSnake
                 Console.SetCursorPosition(p.x, p.y);
                 Console.Write(sign);
             }
+        }
+        public void Save()
+        {
+            try
+            {
+                string D = @"C:\Users\Данара\Documents\Visual Studio 2015\Projects\SNAKE_GAME\SNAKE_GAME\bin\Debug\wall.xml";
+                File.Delete(D);
+
+                FileStream fs = new FileStream("wall.xml", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                XmlSerializer xs = new XmlSerializer(typeof(Wall));
+                xs.Serialize(fs, Program.wall);
+                fs.Close();
+            }
+            catch (Exception e) { }
+        }
+        public void Resume()
+        {
+            try
+            {
+                FileStream fs = new FileStream("wall.xml", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                XmlSerializer xs = new XmlSerializer(typeof(Wall));
+                Program.wall = (Wall)xs.Deserialize(fs);
+                fs.Close();
+            }
+            catch (Exception e) { }
         }
     }
 }

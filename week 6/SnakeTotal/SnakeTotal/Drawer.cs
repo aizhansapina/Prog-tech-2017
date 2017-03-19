@@ -16,15 +16,13 @@ namespace SnakeTotal
         public char sign;
         public List<Point> body = new List<Point>();
 
-
         public Drawer() { }
+
         public Drawer(ConsoleColor color, char sign, List<Point> body)
         {
             this.color = color;
             this.sign = sign;
             this.body = body;
-
-
         }
 
         public void Draw()
@@ -39,8 +37,8 @@ namespace SnakeTotal
 
         public void save()
         {
-            Type t = this.GetType();
-            FileStream fs = new FileStream(String.Format("{0}.dat", t.Name), FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            Type type = this.GetType();
+            FileStream fs = new FileStream(String.Format("{0}.dat", type.Name), FileMode.OpenOrCreate, FileAccess.ReadWrite);
             BinaryFormatter bf = new BinaryFormatter();
             bf.Serialize(fs, this);
             fs.Close();
@@ -48,28 +46,18 @@ namespace SnakeTotal
 
         public void release()
         {
-
-
-            Type t = this.GetType();
-            FileStream fs = new FileStream(String.Format("{0}.dat", t.Name), FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            Type type = this.GetType();
+            FileStream fs = new FileStream(String.Format("{0}.dat", type.Name), FileMode.OpenOrCreate, FileAccess.ReadWrite);
             BinaryFormatter bf = new BinaryFormatter();
-            if (t == typeof(Wall))
+            if (type == typeof(Wall))
                 Game.wall = bf.Deserialize(fs) as Wall;
-            if (t == typeof(Snake))
+            if (type == typeof(Snake))
                 Game.snake = bf.Deserialize(fs) as Snake;
-            if (t == typeof(Food))
+            if (type == typeof(Food))
                 Game.food = bf.Deserialize(fs) as Food;
 
+             fs.Close();
 
-
-
-            fs.Close();
-
-        }
-
-
-
-
-
+        }   
     }
 }

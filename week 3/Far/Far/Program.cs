@@ -11,7 +11,7 @@ namespace Far
     {
         static void ShowInfo(DirectoryInfo directory, int cursor)
         {
-            Console.BackgroundColor = ConsoleColor.White;
+            //Console.BackgroundColor = ConsoleColor.White;
             int index = 0;
             foreach (FileSystemInfo fInfo in directory.GetFileSystemInfos())
             {
@@ -20,9 +20,13 @@ namespace Far
                 else
                     Console.ForegroundColor = ConsoleColor.DarkCyan;
                 index++;
+
                 if (fInfo.GetType() == typeof(FileInfo))
+                {
                     Console.Write("File: ");
+                }
                 else
+                
                     Console.Write("Directory: ");
                 Console.WriteLine(fInfo.Name);
             }
@@ -55,12 +59,17 @@ namespace Far
                     }
                     catch (Exception e)
                     {
-
+                         
                     }
                 }
                 if (pressedKey.Key == ConsoleKey.Escape)
 
                     break;
+
+
+
+
+
             }
         }
     }
