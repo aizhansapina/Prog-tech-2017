@@ -15,8 +15,6 @@ namespace Calculator
         Calculate calculator = new Calculate();
 
         double memory = 0;
-        double psn = 0;
-        double res = 0;
 
         public Form1()
         {
@@ -49,6 +47,10 @@ namespace Calculator
             {
                 equal.PerformClick();
                 calculator.operation = button.Text;
+                if (calculator.result != 0)
+                {
+                    calculator.FirstNumber = calculator.result;
+                }
                 equation.Text = calculator.result + " " + calculator.operation;
                 display.Text = "";
             
@@ -62,7 +64,7 @@ namespace Calculator
             }
 
 
-            if (button.Text == "/")
+            /*if (calculator.FirstNumber != 0 && button.Text == "/")
             {
                 if (calculator.SecondNumber == 0)
                 {
@@ -72,24 +74,24 @@ namespace Calculator
                         calculator.result = calculator.FirstNumber / calculator.SecondNumber;
                 }
             }
-            else
-                calculator.result = calculator.FirstNumber / calculator.SecondNumber;
+            /*else
+                calculator.result = calculator.FirstNumber / calculator.SecondNumber;*/
 
         }
 
         public void result_click(object sender, EventArgs e)
         {
             Button button = sender as Button;
-          
-                calculator.SecondNumber = double.Parse(display.Text);
-                //calculator.result = calculator.FirstNumber; 
-                calculator.Calcul();
 
-                display.Text = calculator.result.ToString();
-                equation.Text = "";
+            calculator.SecondNumber = double.Parse(display.Text);
+            //calculator.result = calculator.FirstNumber; 
+            calculator.Calcul();
+
+            display.Text = calculator.result.ToString();
+            equation.Text = "";   
         }
-            
-            /*if (display.Text != null)
+
+           /* if (display.Text != null)
             {
                 if (calculator.SecondNumber == null)
                 {
@@ -99,46 +101,17 @@ namespace Calculator
                     display.Text = calculator.result.ToString();
                     equation.Text = "";
                 }
-                else
+               else
                 {
-                    //calculator.SecondNumber = double.Parse(display.Text);
-                    calculator.Calcul();
-                    display.Text = calculator.result.ToString();
-                    equation.Text = "";
-                }
-            }
-            /*if (button.Text == "/")
-            {
-                calculator.Calcul();
-                if (calculator.SecondNumber != 0)
-                    //MessageBox.Show("Incorrect data", "Calculator", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                   // display.Text = "Error";
-                    calculator.result = calculator.FirstNumber / calculator.SecondNumber;
-                else
-                    MessageBox.Show("Incorrect data", "Calculator", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-            }
-            else
-                calculator.result = calculator.FirstNumber / calculator.SecondNumber;*/
-            
-            /*if (button.Text == "/")
-            {
-                if (button.Text == "0")
-                    MessageBox.Show("Incorrect data", "Calculator", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                else
-                {
-                    calculator.result = calculator.FirstNumber / calculator.SecondNumber;
                     calculator.SecondNumber = double.Parse(display.Text);
                     calculator.Calcul();
                     display.Text = calculator.result.ToString();
                     equation.Text = "";
                 }
-
-            }*/
+            }
+        }*/
             
-
-        
-
+           
         private void erase_click(object sender, EventArgs e)
         {
             int lngth = display.Text.Length - 1;
@@ -156,8 +129,8 @@ namespace Calculator
                     //display.Text = "0";
                 }
             
-            //if (display.Text == "")
-              //  display.Text = "0";
+            if (display.Text == "")
+                display.Text = "0";
 
             //display.Text = "0";
         }
@@ -179,6 +152,7 @@ namespace Calculator
         {
             display.Text = "";
             display.Text = "0";
+            calculator.SecondNumber = 0;
         }
             
 
@@ -222,18 +196,56 @@ namespace Calculator
                 else
                     MessageBox.Show("Incorrect data", "Calculator", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
         }
 
         public void percent_click(object sender, EventArgs e)
         {
-            if (display.Text != "")
+            if (display.Text != null)
             {
-                calculator.FirstNumber = double.Parse(display.Text);
-                calculator.FirstNumber = calculator.FirstNumber / 100;
-
-                display.Text = calculator.FirstNumber.ToString();
+                if (calculator.operation == null) //&& calculator.SecondNumber == null )
+                {
+                    calculator.FirstNumber = double.Parse(display.Text);
+                    calculator.FirstNumber = calculator.FirstNumber / 100;
+                    display.Text = calculator.FirstNumber.ToString();
+                }
+                else
+                {
+                    calculator.SecondNumber = double.Parse(display.Text);
+                    calculator.result = calculator.FirstNumber * calculator.SecondNumber / 100;
+                    display.Text = calculator.result.ToString();
+                }
             }
+            /*if (display.Text != "")
+            {
+                //calculator.FirstNumber = double.Parse(display.Text);
+
+                if (calculator.SecondNumber == null)
+                {
+                    calculator.FirstNumber = double.Parse(display.Text);
+                    calculator.FirstNumber = calculator.FirstNumber / 100;
+
+                    display.Text = calculator.FirstNumber.ToString();
+                }
+                else
+                {
+                    calculator.FirstNumber = double.Parse(display.Text);
+                    //memory = calculator.FirstNumber;
+                    display.Clear();
+                    if (display.Text != null)
+                    {
+                        calculator.SecondNumber = (double.Parse(display.Text) / 100) * calculator.FirstNumber;
+                        //calculator.SecondNumber = (calculator.SecondNumber / 100) * memory;
+                        calculator.Calcul();
+                        display.Text = calculator.result.ToString();
+                    }
+                    //calculator.Calcul();
+                    //display.Text = calculator.result.ToString();
+                }
+                //calculator.Calcul();
+                //display.Text = calculator.FirstNumber.ToString();
+
+            }*/
+            
         }
 
         public void plusminus_click(object sender, EventArgs e)

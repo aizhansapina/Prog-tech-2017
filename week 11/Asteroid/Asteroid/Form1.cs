@@ -82,5 +82,11 @@ namespace Asteroid
             g.FillPath(brush1, ans.path6);
             g.FillPath(brush1, ans.path7);
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            if(label1.Text == null)
+            label1.Text = "Level:" + "Score:" + "Live";
+        }
     }
 }
