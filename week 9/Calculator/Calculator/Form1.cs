@@ -47,6 +47,7 @@ namespace Calculator
             {
                 equal.PerformClick();
                 calculator.operation = button.Text;
+
                 if (calculator.result != 0)
                 {
                     calculator.FirstNumber = calculator.result;
@@ -63,6 +64,13 @@ namespace Calculator
                 equation.Text = calculator.FirstNumber + " " + calculator.operation;
             }
 
+            if (calculator.operation != null)
+            {
+                button12.Enabled = false;
+                button8.Enabled = false;
+                button16.Enabled = false;
+                button19.Enabled = false;
+            }
 
             /*if (calculator.FirstNumber != 0 && button.Text == "/")
             {
