@@ -12,7 +12,7 @@ namespace TicTacToe
 {
     public partial class Form1 : Form
     {
-        bool motion = true;
+        int motion = 2;
         int cnt = 0;
 
         public Form1()
@@ -20,9 +20,10 @@ namespace TicTacToe
             InitializeComponent();
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void toolStripButton1_Click(object sender, EventArgs e)//New Game
         {
-            motion = true;
+            
+            motion = 2;
             cnt = 0;
 
             A01.Enabled = true;
@@ -56,7 +57,7 @@ namespace TicTacToe
 
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
+        private void toolStripButton2_Click(object sender, EventArgs e)//Exit
         {
             Application.Exit();
         }
@@ -65,24 +66,30 @@ namespace TicTacToe
         {
             Button button = sender as Button;
 
-            if (motion)
+            if (motion % 2 == 0)
+            {
                 button.Text = "X";
-            else
-                button.Text = "O";
+                motion++;
+            }
 
-            motion = !motion;
+            else
+            {
+                button.Text = "O";
+                motion++;
+            }
 
             if (button.Text != null)
                 button.Enabled = false;
 
             cnt++;
-             IsWinner();
+            IsWinner();
         }
 
         private void IsWinner()
         {
             bool winner = false;
 
+            //horizontal
             if (A01.Text == A02.Text && A02.Text == A03.Text && !A01.Enabled)
                 winner = true;
             else if (A11.Text == A12.Text && A12.Text == A13.Text && !A11.Enabled)
@@ -90,6 +97,7 @@ namespace TicTacToe
             else if (A21.Text == A22.Text && A22.Text == A23.Text && !A21.Enabled)
                 winner = true;
 
+            //vertical
             else if (A01.Text == A11.Text && A11.Text == A21.Text && !A01.Enabled)
                 winner = true;
             else if (A02.Text == A12.Text && A12.Text == A22.Text && !A02.Enabled)
@@ -97,6 +105,7 @@ namespace TicTacToe
             else if (A03.Text == A13.Text && A13.Text == A23.Text && !A03.Enabled)
                 winner = true;
 
+            //diagonal
             else if (A01.Text == A12.Text && A12.Text == A23.Text && !A01.Enabled)
                 winner = true;
             else if (A03.Text == A12.Text && A12.Text == A21.Text && !A03.Enabled)
@@ -115,7 +124,8 @@ namespace TicTacToe
                 A23.Enabled = false;
 
                 string Winner = "";
-                if (motion)
+
+                if (motion % 2 != 0)
                 {
                     Winner = "X";
                     x.Text = (Int32.Parse(x.Text) + 1).ToString();
@@ -129,6 +139,7 @@ namespace TicTacToe
 
                 MessageBox.Show(Winner + " " + "IS WINNER!", "GAME OVER", MessageBoxButtons.OK);
             }
+
             else
             {
                 if (cnt == 9)
@@ -139,7 +150,7 @@ namespace TicTacToe
             }
         }
 
-        private void toolStripButton3_Click(object sender, EventArgs e)
+        private void toolStripButton3_Click(object sender, EventArgs e)//About
         {
             MessageBox.Show("Made By Aizhan Sapina", "About");
         }
@@ -150,7 +161,7 @@ namespace TicTacToe
 
             if (button.Enabled)
             {
-                if (motion)
+                if (motion % 2 == 0)
                     button.Text = "X";
                 else
                     button.Text = "O";
@@ -166,11 +177,12 @@ namespace TicTacToe
                 button.Text = "";
             }
 
-            }
+        }
 
-        private void toolStripButton4_Click(object sender, EventArgs e)
+        private void toolStripButton4_Click(object sender, EventArgs e)//PLay Again
         {
-            motion = true;
+            
+            motion = 2;
             cnt = 0;
 
 
