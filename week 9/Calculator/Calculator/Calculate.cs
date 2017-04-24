@@ -14,6 +14,7 @@ namespace Calculator
         public double result;
         public string operation;
         
+        
 
         public void Calcul()
         {
