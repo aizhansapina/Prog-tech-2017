@@ -14,7 +14,7 @@ namespace Asteroid
     {
         Bitmap bmp;
         Graphics g;
-        Ship s = new Ship();
+        Ship s;
         Bullet b = new Bullet();
         AstNstar ans = new AstNstar();
         
@@ -23,6 +23,20 @@ namespace Asteroid
         SolidBrush brush2;
         SolidBrush brush3;
         SolidBrush brush4;
+
+        public enum Direction
+        {
+            None,
+            Up,
+            Down,
+            Left,
+            Right
+        }
+
+        
+        public Direction direction = Direction.None;
+        public int sx = 100, sy = 100;
+
 
         public Form1()
         {
@@ -54,11 +68,7 @@ namespace Asteroid
             ans.asteroid(110, 230);
             ans.asteroid(330, 270);
             ans.asteroid(370, 120);
-
-
-
-
-
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -87,6 +97,31 @@ namespace Asteroid
         {
             if(label1.Text == null)
             label1.Text = "Level:" + "Score:" + "Live";
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Up)
+            {
+                direction = Direction.Up;
+            }
+            if (e.KeyData == Keys.Left)
+            {
+                direction = Direction.Left;
+            }
+            if (e.KeyData == Keys.Down)
+            {
+                direction = Direction.Down;
+            }
+            if (e.KeyData == Keys.Right)
+            {
+                direction = Direction.Right;
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+           
         }
     }
 }

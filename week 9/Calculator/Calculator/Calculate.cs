@@ -13,8 +13,6 @@ namespace Calculator
         public double SecondNumber;
         public double result;
         public string operation;
-        
-        
 
         public void Calcul()
         {
@@ -37,7 +35,7 @@ namespace Calculator
                     result = (FirstNumber * SecondNumber) / 100;
                     break;*/
                 default:
-                    break;
+                break;
             }
         }
     }

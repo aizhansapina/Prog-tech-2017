@@ -13,6 +13,20 @@ namespace Asteroid
         public GraphicsPath path3 = new GraphicsPath();
         public GraphicsPath path4 = new GraphicsPath();
 
+        /*public Ship(int x, int y)
+        {
+            Point[] p =
+            {
+                new Point(x, y - 45),
+                new Point(x + 45, y - 20),
+                new Point(x + 45, y + 20),
+                new Point(x, y + 45),
+                new Point(x - 45, y + 20),
+                new Point(x - 45, y - 20)
+            };
+
+            path3.AddPolygon(p);
+        }*/
         public void ship(int x, int y)
         {
             Point[] p =

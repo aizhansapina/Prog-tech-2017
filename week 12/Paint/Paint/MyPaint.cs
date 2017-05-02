@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-
+using System.Windows.Forms;
 
 namespace Paint
 {
@@ -47,12 +48,16 @@ namespace Paint
                 prevPoint = curPoint;
             }
 
-            int w = Math.Abs(prevPoint.X - e.Location.X);
-            int h = Math.Abs(prevPoint.Y - e.Location.Y);
-            int minX = Math.Min(prevPoint.X, e.Location.X);
-            int minY = Math.Min(prevPoint.Y, e.Location.Y);
+           /* if (shape == Shape.RECTANGLE)
+            {
+                int w = Math.Abs(prevPoint.X - e.Location.X);
+                int h = Math.Abs(prevPoint.Y - e.Location.Y);
+                int minX = Math.Min(prevPoint.X, e.Location.X);
+                int minY = Math.Min(prevPoint.Y, e.Location.Y);
+                g.DrawRectangle(pen, minX, minY, w, h);
+            }*/
 
-            g.DrawRectangle(pen, minX, minY, w, h);
+            
         }
 
     }

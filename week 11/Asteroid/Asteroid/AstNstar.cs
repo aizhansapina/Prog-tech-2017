@@ -21,19 +21,6 @@ namespace Asteroid
 
         public void asteroid(int x, int y)
         {
-            /*Point[] tdown =
-                {
-                    new Point(x, y),
-                    new Point(x + 20, y),
-                    new Point(x + 10, y - 15)
-                 };
-
-            Point[] tup =
-                {
-                new Point(a, b),
-                new Point(a - 10, b + 15),
-                new Point(a + 10, b - 15)
-            };*/
             Point[] tdown =
                 {
                 new Point(x, y - 20),
